@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>SOLA — Avatar Atelier</title>  <script type="module" crossorigin src="/sola-avatar-atelier/assets/index-CC321ycV.js"></script>
+  <link rel="stylesheet" crossorigin href="/sola-avatar-atelier/assets/index-Dg1ZIbTN.css">
+</head>
+<body class="sola">
+  <a class="skip-link" href="#atelier">Skip to the atelier</a>
+  <header class="masthead">
+    <p class="masthead__issue">Issue Nº 01 · The Warm Edit</p>
+    <h1 class="masthead__logo">SOLA</h1>
+    <p class="masthead__tagline">An avatar atelier for slow, considered style. Choose a figure, then dress it in your own palette.</p>
+  </header>
+  <main class="studio">
+    <section class="stage" id="stage" role="tabpanel" aria-label="Avatar stage">
+      <canvas id="avatar-canvas" width="800" height="1000" role="img" aria-label="Avatar preview in your current palette"></canvas>
+      <p class="stage__caption"><span>Look Nº 01</span><span>Fixed silhouette · your palette</span></p>
+    </section>
+    <section class="atelier" id="atelier" aria-labelledby="atelier-title">
+      <p class="atelier__eyebrow">The Atelier</p>
+      <h2 class="atelier__title" id="atelier-title">Make the look yours</h2>
+      <div class="tabs" role="tablist" aria-label="Choose a figure">
+        <button type="button" class="tab is-active" role="tab" id="tab-woman" data-figure="woman" aria-selected="true" aria-controls="stage">Woman</button>
+        <button type="button" class="tab" role="tab" id="tab-man" data-figure="man" aria-selected="false" aria-controls="stage" tabindex="-1">Man</button>
+      </div>
+      <p class="atelier__note" id="garment-note"><strong>Garments are fixed.</strong> Each figure wears one signature outfit, cut for the lookbook. <strong>Colors are editable</strong>, so you can change every swatch below.</p>
+      <fieldset class="palette" aria-describedby="garment-note">
+        <legend class="palette__legend">Palette</legend>
+        <label class="swatch" for="skin"><span class="swatch__name">Skin</span><input type="color" id="skin" value="#c68a68"></label>
+        <label class="swatch" for="hair"><span class="swatch__name">Hair</span><input type="color" id="hair" value="#3a2418"></label>
+        <label class="swatch" for="outer"><span class="swatch__name">Outerwear</span><input type="color" id="outer" value="#b4613a"></label>
+        <label class="swatch" for="bottom"><span class="swatch__name">Bottoms</span><input type="color" id="bottom" value="#e6d8c3"></label>
+        <label class="swatch" for="shoes"><span class="swatch__name">Shoes</span><input type="color" id="shoes" value="#2c2420"></label>
+      </fieldset>
+      <div class="actions">
+        <button type="button" class="btn btn--ghost" id="reset">Reset palette</button>
+        <button type="button" class="btn btn--primary" id="save">Save portrait</button>
+      </div>
+      <p class="atelier__status" id="status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer class="colophon">
+    <p>SOLA Studio · An independent avatar atelier inspired by life-sim character creators. Not affiliated with any game publisher.</p>
+  </footer>
+</body>
+
+</html>
