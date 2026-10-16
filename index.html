@@ -1,46 +1,62 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>SOLA — Avatar Atelier</title>  <script type="module" crossorigin src="/sola-avatar-atelier/assets/index-CC321ycV.js"></script>
-  <link rel="stylesheet" crossorigin href="/sola-avatar-atelier/assets/index-Dg1ZIbTN.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#d5eeea">
+  <title>SOLA — Avatar Atelier</title>
+  <script type="module" crossorigin src="/sola-avatar-atelier/assets/index-BRQWATQ1.js"></script>
+  <link rel="stylesheet" crossorigin href="/sola-avatar-atelier/assets/index-CAnGE27J.css">
 </head>
 <body class="sola">
   <a class="skip-link" href="#atelier">Skip to the atelier</a>
-  <header class="masthead">
-    <p class="masthead__issue">Issue Nº 01 · The Warm Edit</p>
-    <h1 class="masthead__logo">SOLA</h1>
-    <p class="masthead__tagline">An avatar atelier for slow, considered style. Choose a figure, then dress it in your own palette.</p>
-  </header>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-figure" viewBox="0 0 32 32"><circle cx="16" cy="9" r="4.5"/><path d="M8 27c0-6 3.6-10 8-10s8 4 8 10z"/></symbol>
+      <symbol id="i-skin" viewBox="0 0 32 32"><path d="M16 4c4 5 8 9.5 8 14.5a8 8 0 0 1-16 0C8 13.5 12 9 16 4z"/></symbol>
+      <symbol id="i-hair" viewBox="0 0 32 32"><path d="M7 19c0-8 4-13 9-13s9 5 9 13c0 4-1.5 7-3 8 .5-4-1-9-4-11-2 3-6 5-9 5 0 2 .5 4 1.5 6C8.6 26 7 23 7 19z"/></symbol>
+      <symbol id="i-coat" viewBox="0 0 32 32"><path d="M12 4h8l1.5 2.5L27 9l-1.5 16h-3.5V14.5L21 27h-4l-1-12-1 12h-4l-1-12.5V25H6.5L5 9l5.5-2.5z"/></symbol>
+      <symbol id="i-bottom" viewBox="0 0 32 32"><path d="M9 4h14l2 23h-6l-3-14-3 14H7z"/></symbol>
+      <symbol id="i-shoe" viewBox="0 0 32 32"><path d="M5 12c2 0 4-1 5-3l3 1c1 3 4 5 9 6 3 .6 5 2 5 5v3H5z"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 32 32"><path d="M11 8l2-3h6l2 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z"/><circle cx="16" cy="16.5" r="5" fill="var(--icon-cut, #fff)"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 32 32"><path d="M16 6a10 10 0 1 1-9.4 6.6l3.7 1.4A6 6 0 1 0 16 10v4l-6-6 6-6z"/></symbol>
+    </defs>
+  </svg>
+
   <main class="studio">
-    <section class="stage" id="stage" role="tabpanel" aria-label="Avatar stage">
-      <canvas id="avatar-canvas" width="800" height="1000" role="img" aria-label="Avatar preview in your current palette"></canvas>
-      <p class="stage__caption"><span>Look Nº 01</span><span>Fixed silhouette · your palette</span></p>
+    <section class="stage" aria-label="Avatar stage">
+      <header class="brand">
+        <span class="brand__logo">SOLA</span>
+        <span class="brand__sub">Avatar Atelier</span>
+      </header>
+      <canvas id="avatar-canvas" role="img" aria-label="3D avatar preview"></canvas>
+      <div class="stage__hint" aria-hidden="true">Drag to turn · pinch to zoom</div>
+      <div class="stage__look"><span id="look-figure">Woman</span><strong id="look-coat">Base layer</strong></div>
+      <div class="stage__tools">
+        <button type="button" class="orb orb--small" id="reset" aria-label="Reset colours for this figure"><svg><use href="#i-reset"/></svg></button>
+        <button type="button" class="orb orb--small orb--accent" id="save" aria-label="Save portrait as PNG"><svg><use href="#i-camera"/></svg></button>
+      </div>
+      <div class="stage__loader" id="loader" hidden><span></span></div>
     </section>
-    <section class="atelier" id="atelier" aria-labelledby="atelier-title">
-      <p class="atelier__eyebrow">The Atelier</p>
-      <h2 class="atelier__title" id="atelier-title">Make the look yours</h2>
-      <div class="tabs" role="tablist" aria-label="Choose a figure">
-        <button type="button" class="tab is-active" role="tab" id="tab-woman" data-figure="woman" aria-selected="true" aria-controls="stage">Woman</button>
-        <button type="button" class="tab" role="tab" id="tab-man" data-figure="man" aria-selected="false" aria-controls="stage" tabindex="-1">Man</button>
+
+    <section class="atelier" id="atelier" aria-label="Character editor">
+      <button type="button" class="preview-jump" id="preview-jump" hidden>↑ View avatar</button>
+      <nav class="rail" role="tablist" aria-label="Categories">
+        <button type="button" class="orb" role="tab" data-panel="figure" aria-selected="true"><svg><use href="#i-figure"/></svg><span>Figure</span></button>
+        <button type="button" class="orb" role="tab" data-panel="skin" aria-selected="false"><svg><use href="#i-skin"/></svg><span>Skin</span></button>
+        <button type="button" class="orb" role="tab" data-panel="hair" aria-selected="false"><svg><use href="#i-hair"/></svg><span>Hair</span></button>
+        <button type="button" class="orb" role="tab" data-panel="coat" aria-selected="false"><svg><use href="#i-coat"/></svg><span>Coats</span></button>
+        <button type="button" class="orb" role="tab" data-panel="bottom" aria-selected="false"><svg><use href="#i-bottom"/></svg><span>Bottoms</span></button>
+        <button type="button" class="orb" role="tab" data-panel="shoes" aria-selected="false"><svg><use href="#i-shoe"/></svg><span>Shoes</span></button>
+      </nav>
+
+      <div class="panel" id="panel" role="tabpanel">
+        <h2 class="panel__title" id="panel-title">Figure</h2>
+        <div class="panel__body" id="panel-body"></div>
       </div>
-      <p class="atelier__note" id="garment-note"><strong>Garments are fixed.</strong> Each figure wears one signature outfit, cut for the lookbook. <strong>Colors are editable</strong>, so you can change every swatch below.</p>
-      <fieldset class="palette" aria-describedby="garment-note">
-        <legend class="palette__legend">Palette</legend>
-        <label class="swatch" for="skin"><span class="swatch__name">Skin</span><input type="color" id="skin" value="#c68a68"></label>
-        <label class="swatch" for="hair"><span class="swatch__name">Hair</span><input type="color" id="hair" value="#3a2418"></label>
-        <label class="swatch" for="outer"><span class="swatch__name">Outerwear</span><input type="color" id="outer" value="#b4613a"></label>
-        <label class="swatch" for="bottom"><span class="swatch__name">Bottoms</span><input type="color" id="bottom" value="#e6d8c3"></label>
-        <label class="swatch" for="shoes"><span class="swatch__name">Shoes</span><input type="color" id="shoes" value="#2c2420"></label>
-      </fieldset>
-      <div class="actions">
-        <button type="button" class="btn btn--ghost" id="reset">Reset palette</button>
-        <button type="button" class="btn btn--primary" id="save">Save portrait</button>
-      </div>
-      <p class="atelier__status" id="status" role="status" aria-live="polite"></p>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
     </section>
   </main>
-  <footer class="colophon">
-    <p>SOLA Studio · An independent avatar atelier inspired by life-sim character creators. Not affiliated with any game publisher.</p>
-  </footer>
+  <footer class="colophon">SOLA Studio · independent avatar atelier. Models CC0. Not affiliated with any game publisher.</footer>
 </body>
-
 </html>
